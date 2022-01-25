@@ -65,14 +65,15 @@ puts "Температура — от #{min_temp} до #{max_temp} С"
 puts "Ветер #{max_wind} м/с"
 puts clouds
 =end
-
+time = Time.now
 
 token = 'MY TOKEN' 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
-      bot.api.send_message(chat_id: message.chat.id, text: "Здравствуй, #{message.from.first_name} \nПогода на сегодня в #{about}")
+      bot.api.send_message(chat_id: message.chat.id, text: "Здравствуй, #{message.from.first_name} \nПогода на сегодня (#{time = Time.now
+time.strftime("%d/%m/%Y")} в #{about}")
     when '/stop'
       bot.api.send_message(chat_id: message.chat.id, text: "Досвидания, #{message.from.first_name}")
     end
